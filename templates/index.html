@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Counting Sort</title>
+    <style>
+        body { font-family: Arial; background: #667eea; padding: 20px; }
+        .container { max-width: 600px; margin: 0 auto; }
+        .card { background: white; border-radius: 15px; padding: 20px; margin-bottom: 20px; }
+        h1 { color: #667eea; }
+        input { width: 100%; padding: 10px; margin: 10px 0; }
+        button { background: #667eea; color: white; padding: 10px; border: none; width: 100%; cursor: pointer; }
+        .original { background: #fff3cd; padding: 10px; margin: 10px 0; }
+        .sorted { background: #d4edda; padding: 10px; margin: 10px 0; }
+        .error { background: #fee; color: red; padding: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>Сортировка подсчётом</h1>
+            <form method="post" action="/sort">
+                <input type="text" name="numbers" value="{{ numbers_input }}">
+                <button type="submit">Отсортировать</button>
+            </form>
+        </div>
+        
+        {% if error %}
+        <div class="card error">{{ error }}</div>
+        {% endif %}
+        
+        {% if show_result %}
+        <div class="card">
+            <div class="original">Исходный: [{{ original_arr|join(', ') }}]</div>
+            <div class="sorted">Отсортированный: [{{ sorted_arr|join(', ') }}]</div>
+            <p>Время: {{ time_ms }} мс</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
